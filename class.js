@@ -1,13 +1,25 @@
 class Phone {
-  constructor(memory) {
-    this.size = memory;
+  constructor(model) {
     this.brand = "iPhone";
-    this.model = "14 Pro";
+    this.model = model;
   }
-  takePicture() {
-    console.log(`Shot taken on ${this.brand} ${this.model} ${this.size}`);
+  get phoneBrand() {
+    return this.phone;
+  }
+  set phoneModel(model) {
+    this.model = model;
   }
 }
 
-const naomi = new Phone("512GB");
-naomi.takePicture();
+class mini extends Phone {
+  constructor(model) {
+    super(model);
+    this.camera = "12MP";
+  }
+  takePicture() {
+    return `This shot was taken on ${this.camera} ${this.model}`;
+  }
+}
+
+const myPhone = new mini("12 mini");
+console.log(myPhone.takePicture());
